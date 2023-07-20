@@ -1,11 +1,16 @@
 project:
-  name: quickstart-aws-vpc
+  name: quickstart-aws-iam
   owner: quickstart@amazon.com
   package_lambda: false
   template: templates/role.yaml
   regions:
     - eu-central-1
 tests:
-  test-scenario-1:
+  test-scenario-1-with-role:
+      regions:
+      - eu-central-1
+  test-scenario-1-with-user:
+      parameters:
+        CreateUser: "true"
       regions:
       - eu-central-1
