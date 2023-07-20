@@ -7,6 +7,8 @@ project:
     - eu-central-1
 tests:
   test-scenario-1-with-role:
+    parameters:
+        CreateRole: "true"
       regions:
       - eu-central-1
   test-scenario-1-with-user:
