@@ -47,6 +47,7 @@ Resources:
 
   ManagedInstanceProfile:
     Type: AWS::IAM::InstanceProfile
+    Condition: CreateIamRole
     Properties:
       Path: "/"
       Roles:
@@ -55,6 +56,7 @@ Resources:
 
   AutomationServiceRole:
     Type: AWS::IAM::Role
+    Condition: CreateIamRole
     Properties:
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
