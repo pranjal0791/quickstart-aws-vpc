@@ -7,9 +7,18 @@ Parameters:
       - 'true'
       - 'false'
     Default: 'false'
+  CreateRole:
+    Type: String
+    AllowedValues:
+      - 'true'
+      - 'false'
+    Default: 'false'
 Conditions:
   CreateIamUser: !Equals 
     - !Ref CreateUser
+    - true
+  CreateIamRole: !Equals 
+    - !Ref CreateRole
     - true
 Resources:
   IamUser:
@@ -20,6 +29,7 @@ Resources:
         - arn:aws:iam::aws:policy/AdministratorAccess
   ManagedInstanceRole:
     Type: AWS::IAM::Role
+    Condition: CreateIamRole
     Properties:
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
