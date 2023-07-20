@@ -1,7 +1,23 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: AWS CloudFormation template IAM Roles for Systems Manager | Automation Service
-
+Parameters:
+  CreateUser:
+    Type: String
+    AllowedValues:
+      - 'true'
+      - 'false'
+    Default: 'false'
+Conditions:
+  CreateIamUser: !Equals 
+    - !Ref CreateUser
+    - true
 Resources:
+  IamUser:
+    Type: AWS::IAM::User
+    Condition: CreateIamUser
+    Properties: 
+      ManagedPolicyArns: 
+        - arn:aws:iam::aws:policy/AdministratorAccess
   ManagedInstanceRole:
     Type: AWS::IAM::Role
     Properties:
