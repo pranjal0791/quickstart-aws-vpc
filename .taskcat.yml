@@ -5,3 +5,6 @@ project:
   template: templates/role.yaml
   regions:
     - eu-central-1
+test-scenario-1:
+    regions:
+    - eu-central-1
